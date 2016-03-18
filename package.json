@@ -3,7 +3,7 @@
 	"displayName": "gcmd",
 	"description": "Launch a command prompt which contains the custom environment variables",
 	"version": "1.0.0",
-	"publisher": "Ansen",
+	"publisher": "ansen",
 	"engines": {
 		"vscode": "^0.10.10"
 	},

@@ -1,4 +1,6 @@
 # gcmd
+marketplace:https://marketplace.visualstudio.com/items?itemName=ansen.gcmd
+
 Launch a new command line that target the current document path and contains the custom environment variables
 
 # Commands
