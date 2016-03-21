@@ -15,6 +15,13 @@
 	],
 	"main": "./src/extension",
 	"contributes": {
+        "keybindings": [
+			{
+				"command": "extension.gcmd.run",
+				"key": "ctrl+. ctrl+b",
+				"when": "editorTextFocus && editorLangId == 'go'"
+			}
+		],
 		"commands": [{
 			"command": "extension.gcmd.run",
 			"title": "gcmd:run"
