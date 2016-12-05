@@ -1,6 +1,6 @@
 {
-	"name": "gcmd",
-	"displayName": "gcmd",
+	"name": "go-builder-help",
+	"displayName": "go-builder-help",
 	"description": "Launch a command prompt which contains the custom environment variables",
 	"version": "1.0.0",
 	"publisher": "ansen",
@@ -11,21 +11,33 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.gcmd.run"
+		"onCommand:extension.golang-cmd.run",
+		"onCommand:extension.golang-terminal.run"
 	],
 	"main": "./src/extension",
 	"contributes": {
         "keybindings": [
 			{
-				"command": "extension.gcmd.run",
-				"key": "ctrl+. ctrl+b",
+				"command": "extension.golang-cmd.run",
+				"key": "ctrl+g ctrl+b",
+				"when": "editorTextFocus && editorLangId == 'go'"
+			},
+			{
+				"command": "extension.golang-terminal.run",
+				"key": "ctrl+g ctrl+t",
 				"when": "editorTextFocus && editorLangId == 'go'"
 			}
 		],
-		"commands": [{
-			"command": "extension.gcmd.run",
-			"title": "gcmd:run"
-		}]
+		"commands": [
+			{
+				"command": "extension.golang-cmd.run",
+				"title": "golang-cmd:run"
+			},
+			{
+				"command": "extension.golang-terminal.run",
+				"title": "golang-terminal:run"
+			}
+		]
 	},
 	"scripts": {
 		"postinstall": "node ./node_modules/vscode/bin/install"

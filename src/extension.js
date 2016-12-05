@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
 var setting = require('./setting');
+var tsetting = require('./terminal-setting');
 var exec = require("child_process")
 
 // this method is called when your extension is activated
@@ -10,12 +11,12 @@ function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "gcmd" is now active!'); 
+	console.log('Congratulations, your extension "go-builder-help" is now active!'); 
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	var disposable = vscode.commands.registerCommand('extension.gcmd.run', function () {
+	var disposable = vscode.commands.registerCommand('extension.golang-cmd.run', function () {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
@@ -23,6 +24,25 @@ function activate(context) {
 		// vscode.window.showInformationMessage(cmd);
         exec.exec(cmd);
 	});
+
+	// The command has been defined in the package.json file
+	// Now provide the implementation of the command with  registerCommand
+	// The commandId parameter must match the command field in package.json
+	var tdisposable = vscode.commands.registerCommand('extension.golang-terminal.run', function () {
+		// The code you place here will be executed every time your command is executed
+
+		// Display a message box to the user
+        cmd = tsetting.getCommandLine();
+		// vscode.window.showInformationMessage(cmd);
+        // exec.exec(cmd);
+		t = vscode.window.createTerminal("golang-terminal");
+		// t.sendText('echo "Init golang arguments"', true);
+		t.sendText(cmd, true);
+		// t.sendText('echo "Success! Welcome to golang terminal"', true);
+		t.show(false);
+	});
+
+	context.subscriptions.push(tdisposable);
 	context.subscriptions.push(disposable);
 }
 exports.activate = activate;

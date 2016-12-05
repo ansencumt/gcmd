@@ -4,16 +4,17 @@ var path = require('path')
 
 // getCommandLine 获取配置命令行信息
 function getCommandLine() {
-    var configuration = vscode.workspace.getConfiguration("gcmd");
-    var envStr = 'set TEST=123';
+    var configuration = vscode.workspace.getConfiguration("gterminal");
+    var envStr = 'echo "Init golang arguments"';
     var parten = /\{(.+?)\}/g;
     var genv = configuration.get("env");
+    
     if (genv) {
         for (var item in genv) {                        
             if (parten.test(genv[item])) {
-                envStr += "&set " + item + "=" + genv[item].replace(parten, replaceVar);
+                envStr += '&set ' + item + '=' + genv[item].replace(parten, replaceVar);
             } else {
-                envStr += "&set " + item + "=" + genv[item];
+                envStr += '&set ' + item + '=' + genv[item];
             }
         }
     }
@@ -21,7 +22,7 @@ function getCommandLine() {
     if(envTrimStr.length > 0 && envTrimStr[0] == '&') envStr = envTrimStr.substring(1);
     
     var pathName = currentPath();
-    var cmd = envStr + '&start cmd /k cd /D "' + pathName + '"';
+    var cmd = envStr + '&cd /D "' + pathName + '"&echo "Success! Welcome to golang terminal"';
     return cmd;
 }
 exports.getCommandLine = getCommandLine
