@@ -32,14 +32,20 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-        cmd = tsetting.getCommandLine();
+        cmdArray = tsetting.getCommandLine();
 		// vscode.window.showInformationMessage(cmd);
         // exec.exec(cmd);
 		t = vscode.window.createTerminal("golang-terminal");
 		// t.sendText('echo "Init golang arguments"', true);
-		t.sendText(cmd, true);
+		// for(var cmd in cmdArray) {
+		// 	t.sendText(cmd, true);
+		// }
+		cmdArray.forEach(function(item){
+			t.sendText(item, true);
+		});
 		// t.sendText('echo "Success! Welcome to golang terminal"', true);
 		t.show(false);
+		console.log(cmdArray);
 	});
 
 	context.subscriptions.push(tdisposable);
