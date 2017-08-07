@@ -1,8 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-var setting = require('./setting');
-var tsetting = require('./terminal-setting');
+var cmd = require('./cmd');
+var tcmd = require('./terminal');
 var exec = require("child_process")
 
 // this method is called when your extension is activated
@@ -17,35 +17,14 @@ function activate(context) {
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 	var disposable = vscode.commands.registerCommand('extension.golang-cmd.run', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-        cmd = setting.getCommandLine();
-		// vscode.window.showInformationMessage(cmd);
-        exec.exec(cmd);
+		cmd.execute();
 	});
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 	var tdisposable = vscode.commands.registerCommand('extension.golang-terminal.run', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-        cmdArray = tsetting.getCommandLine();
-		// vscode.window.showInformationMessage(cmd);
-        // exec.exec(cmd);
-		t = vscode.window.createTerminal("golang-terminal");
-		// t.sendText('echo "Init golang arguments"', true);
-		// for(var cmd in cmdArray) {
-		// 	t.sendText(cmd, true);
-		// }
-		cmdArray.forEach(function(item){
-			t.sendText(item, true);
-		});
-		// t.sendText('echo "Success! Welcome to golang terminal"', true);
-		t.show(false);
-		console.log(cmdArray);
+		tcmd.execute();
 	});
 
 	context.subscriptions.push(tdisposable);

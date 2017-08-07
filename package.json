@@ -1,15 +1,23 @@
 {
 	"name": "go-builder-help",
-	"displayName": "go-builder-help",
+	"displayName": "go-build-helper",
 	"description": "Launch a command prompt which contains the custom environment variables",
-	"version": "2.0.0",
+	"version": "2.1.2",
 	"publisher": "ansencumt",
 	"engines": {
 		"vscode": "^1.9.0"
 	},
+	"author": {
+        "name": "Ansen Z"
+    },
 	"categories": [
 		"Other"
 	],
+	"icon": "icon.png",
+    "galleryBanner": {
+        "color": "#C80000",
+        "theme": "dark"
+    },
 	"activationEvents": [
 		"onCommand:extension.golang-cmd.run",
 		"onCommand:extension.golang-terminal.run"
@@ -47,10 +55,20 @@
 					"default": null,
 					"description": "the custom environment variables, like \"gcmd.env\": {\"GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"GOOS\":\"linux\"}"
 				},
+				"gcmd.shell.type": {
+					"type": ["string", "null"],
+					"default": "cmd",
+					"description": "the type of shell bin.just :cmd,powershell"
+				},
 				"gterminal.env": {
 					"type": ["object", "null"],
 					"default": null,
 					"description": "the custom environment variables, like \"gcmd.env\": {\"env:GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"env:GOOS\":\"linux\"}"
+				}, 
+				"gterminal.shell.type": {
+					"type": ["string", "null"],
+					"default": "powershell",
+					"description": "the type of shell bin.just :cmd,powershell"
 				}
 			}
 		}

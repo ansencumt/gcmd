@@ -5,24 +5,23 @@ var path = require('path')
 // getCommandLine 获取配置命令行信息
 function getCommandLine() {
     var configuration = vscode.workspace.getConfiguration("gcmd");
-    var envStr = 'set TEST=123';
+    var cmdArray = [];
+
     var parten = /\{(.+?)\}/g;
     var genv = configuration.get("env");
     if (genv) {
         for (var item in genv) {                        
+            var cmdStr = undefined;
             if (parten.test(genv[item])) {
-                envStr += "&set " + item + "=" + genv[item].replace(parten, replaceVar);
+                cmdStr = "set " + item + "=" + genv[item].replace(parten, replaceVar);
             } else {
-                envStr += "&set " + item + "=" + genv[item];
+                cmdStr = "set " + item + "=" + genv[item];
             }
+            if(cmdStr)
+                cmdArray.push(cmdStr.trim());
         }
     }
-    var envTrimStr = envStr.trim();
-    if(envTrimStr.length > 0 && envTrimStr[0] == '&') envStr = envTrimStr.substring(1);
-    
-    var pathName = currentPath();
-    var cmd = envStr + '&start cmd /k cd /D "' + pathName + '"';
-    return cmd;
+    return cmdArray;
 }
 exports.getCommandLine = getCommandLine
 
@@ -44,11 +43,6 @@ function replaceVar(whole, key) {
     if (val) return val;
 
     return key;
-}
-
-// currentPath 获取当前是文件的目录
-function currentPath() {
-    return path.dirname(vscode.window.activeTextEditor.document.fileName);
 }
 
 // rootPath 获取当前是文件的目录
