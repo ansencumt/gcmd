@@ -2,7 +2,7 @@
     "name": "go-builder-help",
     "displayName": "Configurable Command Prompt",
     "description": "Launch a command prompt which contains the custom environment variables",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "publisher": "ansencumt",
     "engines": {
         "vscode": "^1.9.0"
