@@ -6,7 +6,7 @@ var path = require('path')
 function getCommandLine() {
     var configuration = vscode.workspace.getConfiguration("gterminal");
     var cmdArray = [];
-    cmdArray.push('echo "Init golang 1`arguments"');
+    cmdArray.push('echo "Init Configurable Command Prompt"');
 
     var parten = /\{(.+?)\}/g;
     var genv = configuration.get("env");    
@@ -28,7 +28,7 @@ function getCommandLine() {
     var cmdStr = 'Set-Location -Path "' + pathName + '"';
     cmdArray.push(cmdStr);
 
-    cmdArray.push('echo "Success! Welcome to golang terminal"');
+    cmdArray.push('echo "Success! Welcome to Configurable Command Prompt"');
     return cmdArray;
 }
 exports.getCommandLine = getCommandLine

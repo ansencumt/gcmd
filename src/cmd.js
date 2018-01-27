@@ -22,7 +22,7 @@ function execute() {
 	}
 
 	var pathName = currentPath();
-    var cmdStr = 'start cmd /k cd /D "' + pathName + '"';
+    var cmdStr = 'start "Configurable Command Prompt" /i cmd /k cd /D "' + pathName + '"';
     cmdArray.push(cmdStr.trim());
 
 	var cmdStr = cmdArrToString(cmdArray)

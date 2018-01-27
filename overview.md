@@ -27,3 +27,6 @@ There are two reserved variables.They mean what their literal mean
 
 * {currentpath}
 * {rootpath}
+
+
+__note: The icon come from wjq345(wechat)__

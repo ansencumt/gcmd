@@ -1,82 +1,94 @@
 {
-	"name": "go-builder-help",
-	"displayName": "go-build-helper",
-	"description": "Launch a command prompt which contains the custom environment variables",
-	"version": "2.1.2",
-	"publisher": "ansencumt",
-	"engines": {
-		"vscode": "^1.9.0"
-	},
-	"author": {
+    "name": "go-builder-help",
+    "displayName": "Configurable Command Prompt",
+    "description": "Launch a command prompt which contains the custom environment variables",
+    "version": "2.3.0",
+    "publisher": "ansencumt",
+    "engines": {
+        "vscode": "^1.9.0"
+    },
+    "author": {
         "name": "Ansen Z"
     },
-	"categories": [
-		"Other"
-	],
-	"icon": "icon.png",
+    "categories": [
+        "Other"
+    ],
+    "icon": "icon.png",
     "galleryBanner": {
         "color": "#C80000",
         "theme": "dark"
     },
-	"activationEvents": [
-		"onCommand:extension.golang-cmd.run",
-		"onCommand:extension.golang-terminal.run"
-	],
-	"main": "./src/extension",
-	"contributes": {
+    "activationEvents": [
+        "onCommand:extension.golang-cmd.run",
+        "onCommand:extension.golang-terminal.run"
+    ],
+    "main": "./src/extension",
+    "contributes": {
         "keybindings": [
-			{
-				"command": "extension.golang-cmd.run",
-				"key": "ctrl+g ctrl+b",
-				"when": "editorTextFocus && editorLangId == 'go'"
-			},
-			{
-				"command": "extension.golang-terminal.run",
-				"key": "ctrl+g ctrl+t",
-				"when": "editorTextFocus && editorLangId == 'go'"
-			}
-		],
-		"commands": [
-			{
-				"command": "extension.golang-cmd.run",
-				"title": "golang-cmd:run"
-			},
-			{
-				"command": "extension.golang-terminal.run",
-				"title": "golang-terminal:run"
-			}
-		],
-		"configuration": {
-			"type": "object",
-			"title": "gcmd configuration",
-			"properties": {
-				"gcmd.env": {
-					"type": ["object", "null"],
-					"default": null,
-					"description": "the custom environment variables, like \"gcmd.env\": {\"GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"GOOS\":\"linux\"}"
-				},
-				"gcmd.shell.type": {
-					"type": ["string", "null"],
-					"default": "cmd",
-					"description": "the type of shell bin.just :cmd,powershell"
-				},
-				"gterminal.env": {
-					"type": ["object", "null"],
-					"default": null,
-					"description": "the custom environment variables, like \"gcmd.env\": {\"env:GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"env:GOOS\":\"linux\"}"
-				}, 
-				"gterminal.shell.type": {
-					"type": ["string", "null"],
-					"default": "powershell",
-					"description": "the type of shell bin.just :cmd,powershell"
-				}
-			}
-		}
-	},
-	"scripts": {
-		"postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
-		"vscode": "^1.9.0"
-	}
+            {
+                "command": "extension.golang-cmd.run",
+                "key": "ctrl+g ctrl+b",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.golang-terminal.run",
+                "key": "ctrl+g ctrl+t",
+                "when": "editorTextFocus"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.golang-cmd.run",
+                "title": "golang-cmd:run"
+            },
+            {
+                "command": "extension.golang-terminal.run",
+                "title": "golang-terminal:run"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Configurable Command Prompt configuration",
+            "properties": {
+                "gcmd.env": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "the custom environment variables, like \"gcmd.env\": {\"GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"GOOS\":\"linux\"}"
+                },
+                "gcmd.shell.type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": "cmd",
+                    "description": "the type of shell bin.just :cmd,powershell"
+                },
+                "gterminal.env": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "the custom environment variables, like \"gcmd.env\": {\"env:GOPATH\": \"E:\\golang\\golibs;D:\\golang\\path;{rootpath}\",\"env:GOOS\":\"linux\"}"
+                },
+                "gterminal.shell.type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": "powershell",
+                    "description": "the type of shell bin.just :cmd,powershell"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^1.9.0"
+    }
 }
