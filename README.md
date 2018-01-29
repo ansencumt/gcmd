@@ -18,8 +18,8 @@ By default, this extension use the native command line in your OS. But, you can 
     },
 
     "gterminal.env": {
-        "GOPATH": "{go.gopath};{GOPATH}"
-        ,"GOOS":"linux"
+        "env:GOPATH": "{go.gopath};{GOPATH}"
+        ,"env:GOOS":"linux"
     }
 }
 ```
