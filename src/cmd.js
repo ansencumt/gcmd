@@ -22,11 +22,12 @@ function execute() {
 	}
 
 	var pathName = currentPath();
-    var cmdStr = 'start "Configurable Command Prompt" cmd /k cd /D "' + pathName + '"';
+    var cmdStr = 'start "Configurable Command Prompt" /D "' + pathName + '" cmd /k';
     cmdArray.push(cmdStr.trim());
 
 	var cmdStr = cmdArrToString(cmdArray)
 	exec.exec(cmdStr);
+	console.log(cmdStr);
 	console.log(cmdArray);
 }
 
